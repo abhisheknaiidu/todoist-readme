@@ -1,0 +1,26 @@
+name: 'Todoist Readme'
+author: Abhishek Naidu
+description: '📊 Updates README with your Todoist stats'
+
+inputs:
+  GH_TOKEN:
+    description: 'GitHub access token with Repo scope'
+    required: true
+    default: ${{ github.token }}
+
+  TODOIST_API_KEY:
+    description: 'Your Todoist API Key'
+    required: true
+
+  USERNAME:
+    description: 'Your GitHub username'
+    default: ${{ github.repository_owner }}
+    required: false
+
+runs:
+  using: "node12"
+  main: "dist/todoist-update.js"
+
+branding:
+  icon: "activity"
+  color: "red"
