@@ -1,0 +1,11 @@
+{
+    "name": "todoist-readme",
+    "version": "0.7",
+    "description": "📊 Updates README with your Todoist stats",
+    "author": "Abhishek <geekyabhi12@gmail.com>",
+    "license": "Creative Commons Legal Code",
+    "scripts": {
+      "build": "ncc build index.js --out dist --minify"
+    }
+  }
+  
