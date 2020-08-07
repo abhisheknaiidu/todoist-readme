@@ -1,11 +1,24 @@
 {
-    "name": "todoist-readme",
-    "version": "0.7",
-    "description": "📊 Updates README with your Todoist stats",
-    "author": "Abhishek <geekyabhi12@gmail.com>",
-    "license": "Creative Commons Legal Code",
-    "scripts": {
-      "build": "ncc build index.js --out dist --minify"
-    }
-  }
-  
+  "name": "todoist-readme",
+  "version": "0.0.7",
+  "description": "📊 Updates README with your Todoist stats",
+  "main": "todoist-update.js",
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ncc build index.js --out dist --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhisheknaiidu/todoist-readme.git"
+  },
+  "author": "Abhishek Naidu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abhisheknaiidu/todoist-readme/issues"
+  },
+  "homepage": "https://github.com/abhisheknaiidu/todoist-readme#readme"
+}
