@@ -9,10 +9,12 @@
     "fs": "^0.0.1-security",
     "humanize-plus": "^1.8.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@zeit/ncc": "^0.22.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "ncc build index.js --out dist --minify"
+    "build": "ncc build todoist-update.js --out dist --minify"
   },
   "repository": {
     "type": "git",
