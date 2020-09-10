@@ -3,11 +3,6 @@ author: Abhishek Naidu
 description: '📊 Updates README with your Todoist stats'
 
 inputs:
-  GH_TOKEN:
-    description: 'GitHub access token with Repo scope'
-    required: true
-    default: ${{ github.token }}
-
   TODOIST_API_KEY:
     description: 'Your Todoist API Key'
     required: true
@@ -19,7 +14,7 @@ inputs:
 
 runs:
   using: "node12"
-  main: "dist/todoist-update.js"
+  main: "dist/index.js"
 
 branding:
   icon: "activity"
