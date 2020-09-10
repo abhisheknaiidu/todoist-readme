@@ -4,7 +4,9 @@
   "description": "📊 Updates README with your Todoist stats",
   "main": "todoist-update.js",
   "dependencies": {
-    "fs": "^0.0.1-security"
+    "axios": "^0.20.0",
+    "fs": "^0.0.1-security",
+    "humanize-plus": "^1.8.2"
   },
   "devDependencies": {},
   "scripts": {
