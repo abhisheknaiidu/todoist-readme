@@ -503,7 +503,7 @@ async function updateReadme(data) {
   }
   
   const buildReadme = (prevReadmeContent, newReadmeContent) => {
-    const tagToLookFor = '<!--TODO-LIST:';
+    const tagToLookFor = '<!-- TODO-IST:';
     const closingTag = '-->';
     const startOfOpeningTagIndex = prevReadmeContent.indexOf(
       `${tagToLookFor}START`,
