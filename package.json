@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "ncc build todoist-update.js --out dist --minify"
+    "build": "ncc build index.js -o dist"
   },
   "repository": {
     "type": "git",
