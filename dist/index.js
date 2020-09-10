@@ -489,6 +489,7 @@ async function updateReadme(data) {
 
     try {
         console.log(todoist.join("\n"));
+        const README_FILE_PATH = "./README.md";
         const readmeData = fs.readFileSync(README_FILE_PATH, 'utf8');
         const newReadme = buildReadme(readmeData, todoist);
 
@@ -498,7 +499,7 @@ async function updateReadme(data) {
           }
 
       } catch (error) {
-        console.error(`Unable to update gist\n${error}`);
+        console.error(`Unable to update readme\n${error}`);
       }
   }
   
