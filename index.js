@@ -38,6 +38,7 @@ async function updateReadme(data) {
         console.log(todoist.join("\n"));
         console.log("1");
         fs.writeFileSync("./README.md", todoist.join("\n"));
+        console.log("2");
         // const README_FILE_PATH = './README.md';
         // console.log("3");
         // const readmeData = fs.readFileSync(README_FILE_PATH, 'utf8');
