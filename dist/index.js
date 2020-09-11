@@ -473,7 +473,7 @@ async function updateReadme(data) {
     
     const { karma, completed_count, days_items, goals } = data;
   
-    const karmaPoint = [`🌈 ${Humanize.intComma(karma)} Karma Points`];
+    const karmaPoint = [`🏆 ${Humanize.intComma(karma)} Karma Points`];
     todoist.push(karmaPoint);
   
     const dailyGoal = [
@@ -485,7 +485,7 @@ async function updateReadme(data) {
     todoist.push(totalTasks);
   
     const longestStreak = [
-      `⌛ Longest streak is ${goals.max_daily_streak.count} days`,
+      `⏳ Longest streak is ${goals.max_daily_streak.count} days`,
     ];
     todoist.push(longestStreak);
   
