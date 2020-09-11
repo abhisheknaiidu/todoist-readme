@@ -43,7 +43,7 @@ async function updateReadme(data) {
         const readmeData = fs.readFileSync(README_FILE_PATH, "utf8");
   
   
-        const newReadme = buildReadme(readmeData, todoist.join("\n"));
+        const newReadme = buildReadme(readmeData, todoist.split(","));
         if (newReadme !== readmeData) {
           core.info('Writing to ' + README_FILE_PATH);
           fs.writeFileSync(README_FILE_PATH, newReadme);
@@ -114,7 +114,7 @@ async function updateReadme(data) {
     await exec('git', ['config', '--global', 'user.name', committerUsername]);
     await exec('git', ['add', README_FILE_PATH]);
     await exec('git', ['commit', '-m', commitMessage]);
-    await exec('git', ['push']);
+    await exec('git', ['push --force']);
     core.info("Readme updated successfully.");
     // Making job fail if one of the source fails
     process.exit(jobFailFlag ? 1 : 0);
