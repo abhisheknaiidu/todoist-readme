@@ -570,8 +570,8 @@ async function updateReadme(data) {
     await exec('git', ['config', '--global', 'user.name', committerUsername]);
     await exec('git', ['add', README_FILE_PATH]);
     await exec('git', ['commit', '-m', commitMessage]);
-    await exec('git', ['fetch']);
-    await exec('git', ['push', '--force']);
+    // await exec('git', ['fetch']);
+    await exec('git', ['push']);
     core.info("Readme updated successfully.");
     // Making job fail if one of the source fails
     process.exit(jobFailFlag ? 1 : 0);
