@@ -115,11 +115,11 @@ async function updateReadme(data) {
       committerEmail,
     ]);
     await exec('git', ['config', '--global', 'user.name', committerUsername]);
+    await exec('git', ['pull', 'https://github.com/abhisheknaiidu/abhisheknaiidu']);
     await exec('git', ['add', README_FILE_PATH]);
     await exec('git', ['commit', '-m', commitMessage]);
-    await exec('git', ['remote', 'add', 'origin', 'https://github.com/abhisheknaiidu/abhisheknaiidu']);
-    await exec('git', ['fetch', '--unshallow', 'origin']);
-    await exec('git', ['push', '--force', 'origin']);
+    // await exec('git', ['fetch', '--unshallow', 'origin']);
+    await exec('git', ['push', '--force']);
     core.info("Readme updated successfully.");
     // Making job fail if one of the source fails
     process.exit(jobFailFlag ? 1 : 0);
