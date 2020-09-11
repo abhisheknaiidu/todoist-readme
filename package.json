@@ -1,7 +1,7 @@
 {
   "name": "todoist-readme",
   "version": "0.0.7",
-  "description": "📊 Updates README with your Todoist stats",
+  "description": "🚧 Updates README with your Todoist stats",
   "main": "index.js",
   "dependencies": {
     "@actions/core": "^1.2.5",
