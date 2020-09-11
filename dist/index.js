@@ -569,7 +569,7 @@ async function updateReadme(data) {
     ]);
     await exec('git', ['config', '--global', 'user.name', committerUsername]);
     await exec('git', ['add', README_FILE_PATH]);
-    await exec('git', ['commit', '-m', commitMessage]);
+    await exec('git', ['commit', '--amend', '-m', commitMessage]);
     // await exec('git', ['fetch']);
     await exec('git', ['push']);
     core.info("Readme updated successfully.");
