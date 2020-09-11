@@ -37,10 +37,10 @@ async function updateReadme(data) {
     todoist.push(longestStreak.join(" "));
   
     if (todoist.length == 0) return;
-    // console.log(lines.join("\n"));
   }
 
   if (todoist.length > 0) {
+    console.log(todoist.length);
       const readmeData = fs.readFileSync(README_FILE_PATH, "utf8");
 
 
@@ -49,7 +49,6 @@ async function updateReadme(data) {
         core.info('Writing to ' + README_FILE_PATH);
         fs.writeFileSync(README_FILE_PATH, newReadme);
         if (!process.env.TEST_MODE) {
-          // noinspection JSIgnoredPromiseFromCall
           commitReadme();
         }
       } else {
@@ -58,7 +57,7 @@ async function updateReadme(data) {
       }
     } 
    else {
-    core.info("0 blog posts fetched");
+    core.info("Nothing fetched");
     process.exit(jobFailFlag ? 1 : 0);
   }
 
