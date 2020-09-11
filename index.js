@@ -40,10 +40,13 @@ async function updateReadme(data) {
 
     if (todoist.length > 0) {
       console.log(todoist.length);
+      const showTasks = todoist.reduce((todo, cur, index) => {
+        return todo + `\n${cur}` + (((index + 1) === todoist.length) ? '\n' : '');
+      })
         const readmeData = fs.readFileSync(README_FILE_PATH, "utf8");
   
   
-        const newReadme = buildReadme(readmeData, todoist.join("\n"));
+        const newReadme = buildReadme(readmeData, showTasks);
         if (newReadme !== readmeData) {
           core.info('Writing to ' + README_FILE_PATH);
           fs.writeFileSync(README_FILE_PATH, newReadme);
