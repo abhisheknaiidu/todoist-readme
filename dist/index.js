@@ -481,16 +481,15 @@ async function updateReadme(data) {
       `🌸  Completed ${days_items[0].total_completed.toString()} tasks today`,
     ];
     todoist.push(dailyGoal);
-  
-    const totalTasks = [`✅  Completed ${Humanize.intComma(completed_count)} tasks so far`];
-    todoist.push(totalTasks);
 
     if(PREMIUM) {
       const weekItems = [`🗓  Completed ${week_items[0].total_completed.toString()} tasks this week`];
       todoist.push(weekItems);
     }
-
   
+    const totalTasks = [`✅  Completed ${Humanize.intComma(completed_count)} tasks so far`];
+    todoist.push(totalTasks);
+
     const longestStreak = [
       `⏳  Longest streak is ${goals.max_daily_streak.count} days`,
     ];
