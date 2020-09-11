@@ -21,20 +21,20 @@ async function updateReadme(data) {
     const { karma, completed_count, days_items, goals } = data;
   
     const karmaPoint = [`🌈 ${Humanize.intComma(karma)} Karma Points`];
-    todoist.push(karmaPoint);
+    todoist.push(karmaPoint.join(" "));
   
     const dailyGoal = [
       `🌸 Completed ${days_items[0].total_completed.toString()} tasks today`,
     ];
-    todoist.push(dailyGoal);
+    todoist.push(dailyGoal.join(" "));
   
     const totalTasks = [`✅ Completed ${Humanize.intComma(completed_count)} tasks so far`];
-    todoist.push(totalTasks);
+    todoist.push(totalTasks.join(" "));
   
     const longestStreak = [
       `⌛ Longest streak is ${goals.max_daily_streak.count} days`,
     ];
-    todoist.push(longestStreak);
+    todoist.push(longestStreak.join(" "));
   
     if (todoist.length == 0) return;
 
@@ -43,7 +43,7 @@ async function updateReadme(data) {
         const readmeData = fs.readFileSync(README_FILE_PATH, "utf8");
   
   
-        const newReadme = buildReadme(readmeData, todoist);
+        const newReadme = buildReadme(readmeData, todoist.join("\n"));
         if (newReadme !== readmeData) {
           core.info('Writing to ' + README_FILE_PATH);
           fs.writeFileSync(README_FILE_PATH, newReadme);
