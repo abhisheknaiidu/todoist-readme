@@ -39,6 +39,8 @@ async function updateReadme(data) {
     if (todoist.length == 0) return;
   }
 
+  console.log(todoist.length);
+
   if (todoist.length > 0) {
     console.log(todoist.length);
       const readmeData = fs.readFileSync(README_FILE_PATH, "utf8");
