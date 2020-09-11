@@ -474,20 +474,20 @@ async function updateReadme(data) {
     const { karma, completed_count, days_items, goals } = data;
   
     const karmaPoint = [`🌈 ${Humanize.intComma(karma)} Karma Points`];
-    todoist.push(karmaPoint.join(" "));
+    todoist.push(karmaPoint);
   
     const dailyGoal = [
       `🌸 Completed ${days_items[0].total_completed.toString()} tasks today`,
     ];
-    todoist.push(dailyGoal.join(" "));
+    todoist.push(dailyGoal);
   
     const totalTasks = [`✅ Completed ${Humanize.intComma(completed_count)} tasks so far`];
-    todoist.push(totalTasks.join(" "));
+    todoist.push(totalTasks);
   
     const longestStreak = [
       `⌛ Longest streak is ${goals.max_daily_streak.count} days`,
     ];
-    todoist.push(longestStreak.join(" "));
+    todoist.push(longestStreak);
   
     if (todoist.length == 0) return;
 
