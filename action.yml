@@ -1,6 +1,6 @@
 name: 'Todoist Readme'
 author: Abhishek Naidu
-description: '📊 Updates README with your Todoist stats'
+description: '🚧 Updates README with your Todoist stats'
 
 inputs:
   TODOIST_API_KEY:
