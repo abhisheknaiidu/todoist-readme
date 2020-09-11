@@ -455,6 +455,7 @@ const core = __webpack_require__(470);
 const axios = __webpack_require__(53);
 const Humanize = __webpack_require__(481);
 const fs = __webpack_require__(747);
+const exec = __webpack_require__(898);
 
 const TODOIST_API_KEY = core.getInput("TODOIST_API_KEY");
 
@@ -463,9 +464,13 @@ async function main() {
     await updateReadme(stats.data);
 }
 
+let todoist = [];
+let jobFailFlag = false;
+const README_FILE_PATH = './README.md';
+
 async function updateReadme(data) {
 
-    const todoist = [];
+    
     const { karma, completed_count, days_items, goals } = data;
   
     const karmaPoint = [`🌈 ${Humanize.intComma(karma)} Karma Points`];
@@ -486,27 +491,30 @@ async function updateReadme(data) {
   
     if (todoist.length == 0) return;
     // console.log(lines.join("\n"));
-
-    try {
-        console.log(todoist.join("\n"));
-        console.log("1");
-        // fs.writeFileSync("./README.md", todoist.join("\n"));
-        // console.log("2");
-        // const README_FILE_PATH = './README.md';
-        // console.log("3");
-        const readmeData = fs.readFileSync("./README.md", "utf8");
-        console.log("2");
-        const newReadme = buildReadme(readmeData, todoist);
-
-        if (newReadme !== readmeData) {
-            core.info('Writing to README');
-            fs.writeFileSync("./README.md", newReadme);
-          }
-
-      } catch (error) {
-        console.error(`Unable to update readme\n${error}`);
-      }
   }
+
+  if (todoist.length > 0) {
+      const readmeData = fs.readFileSync(README_FILE_PATH, "utf8");
+
+
+      const newReadme = buildReadme(readmeData, todoist);
+      if (newReadme !== readmeData) {
+        core.info('Writing to ' + README_FILE_PATH);
+        fs.writeFileSync(README_FILE_PATH, newReadme);
+        if (!process.env.TEST_MODE) {
+          // noinspection JSIgnoredPromiseFromCall
+          commitReadme();
+        }
+      } else {
+        core.info('No change detected, skipping');
+        process.exit(0);
+      }
+    } 
+   else {
+    core.info("0 blog posts fetched");
+    process.exit(jobFailFlag ? 1 : 0);
+  }
+
   
   const buildReadme = (prevReadmeContent, newReadmeContent) => {
     const tagToLookFor = '<!-- TODO-IST:';
@@ -534,16 +542,44 @@ async function updateReadme(data) {
     }
     return [
       prevReadmeContent.slice(0, endOfOpeningTagIndex + closingTag.length),
-      '',
+      '\n',
       newReadmeContent,
-      '',
+      '\n',
       prevReadmeContent.slice(startOfClosingTagIndex),
     ].join('');
+  };
+
+  const commitReadme = async () => {
+    // Getting config
+    const committerUsername = 'Abhishek Naidu';
+    const committerEmail = 'example@gmail.com';
+    const commitMessage = 'Todoist updated.';
+    // Doing commit and push
+    await exec('git', [
+      'config',
+      '--global',
+      'user.email',
+      committerEmail,
+    ]);
+    await exec('git', ['config', '--global', 'user.name', committerUsername]);
+    await exec('git', ['add', README_FILE_PATH]);
+    await exec('git', ['commit', '-m', commitMessage]);
+    await exec('git', ['push']);
+    core.info("Readme updated successfully.");
+    // Making job fail if one of the source fails
+    process.exit(jobFailFlag ? 1 : 0);
   };
 
   (async () => {
     await main();
   })();
+
+/***/ }),
+
+/***/ 129:
+/***/ (function(module) {
+
+module.exports = require("child_process");
 
 /***/ }),
 
@@ -3519,6 +3555,35 @@ module.exports = function combineURLs(baseURL, relativeURL) {
     : baseURL;
 };
 
+
+/***/ }),
+
+/***/ 898:
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+const {spawn} = __webpack_require__(129);
+ 
+const exec = (cmd, args = [], options = {}) => new Promise((resolve, reject) => {
+  console.log(`Started: ${cmd} ${args.join(' ')}`);
+  const optionsToCLI = {
+    ...options
+  };
+  if (!optionsToCLI.stdio) {
+    Object.assign(optionsToCLI, {stdio: ['inherit', 'inherit', 'inherit']});
+  }
+  const app = spawn(cmd, args, optionsToCLI);
+  app.on('close', (code) => {
+    if (code !== 0) {
+      const err = new Error(`Invalid status code: ${code}`);
+      err.code = code;
+      return reject(err);
+    }
+    return resolve(code);
+  });
+  app.on('error', reject);
+});
+ 
+module.exports = exec;
 
 /***/ }),
 
