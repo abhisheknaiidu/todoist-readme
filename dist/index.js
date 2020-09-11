@@ -494,7 +494,7 @@ async function updateReadme(data) {
     if (todoist.length > 0) {
       console.log(todoist.length);
       const showTasks = todoist.reduce((todo, cur, index) => {
-        return todo + `\n${cur}` + (((index + 1) === todoist.length) ? '\n' : '');
+        return todo + `\n${cur}        ` + (((index + 1) === todoist.length) ? '\n' : '');
       })
         const readmeData = fs.readFileSync(README_FILE_PATH, "utf8");
   
