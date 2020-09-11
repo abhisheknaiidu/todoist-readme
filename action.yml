@@ -11,6 +11,11 @@ inputs:
     description: 'Your GitHub username'
     default: ${{ github.repository_owner }}
     required: false
+  
+  PREMIUM:
+    description: 'Premium User or Not'
+    default: false
+    required: false
 
 runs:
   using: "node12"

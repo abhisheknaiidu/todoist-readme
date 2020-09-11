@@ -5,6 +5,7 @@ const fs = require("fs");
 const exec = require("./exec");
 
 const TODOIST_API_KEY = core.getInput("TODOIST_API_KEY");
+const PREMIUM = core.getInput("PREMIUM");
 
 async function main() {
     const stats = await axios(`https://api.todoist.com/sync/v8.3/completed/get_stats?token=${TODOIST_API_KEY}`);
@@ -18,21 +19,27 @@ const README_FILE_PATH = './README.md';
 async function updateReadme(data) {
 
     
-    const { karma, completed_count, days_items, goals } = data;
+    const { karma, completed_count, days_items, goals, week_items } = data;
   
-    const karmaPoint = [`🏆 ${Humanize.intComma(karma)} Karma Points`];
+    const karmaPoint = [`🏆  ${Humanize.intComma(karma)} Karma Points`];
     todoist.push(karmaPoint);
   
     const dailyGoal = [
-      `🌸 Completed ${days_items[0].total_completed.toString()} tasks today`,
+      `🌸  Completed ${days_items[0].total_completed.toString()} tasks today`,
     ];
     todoist.push(dailyGoal);
   
-    const totalTasks = [`✅ Completed ${Humanize.intComma(completed_count)} tasks so far`];
+    const totalTasks = [`✅  Completed ${Humanize.intComma(completed_count)} tasks so far`];
     todoist.push(totalTasks);
+
+    if(PREMIUM) {
+      const weekItems = [`🗓  Completed ${week_items[0].total_completed.toString()} tasks this week`];
+      todoist.push(totalTasks);
+    }
+
   
     const longestStreak = [
-      `⏳ Longest streak is ${goals.max_daily_streak.count} days`,
+      `⏳  Longest streak is ${goals.max_daily_streak.count} days`,
     ];
     todoist.push(longestStreak);
   
