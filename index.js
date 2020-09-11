@@ -21,47 +21,49 @@ async function updateReadme(data) {
     const { karma, completed_count, days_items, goals } = data;
   
     const karmaPoint = [`🌈 ${Humanize.intComma(karma)} Karma Points`];
-    todoist.push(karmaPoint.join(" "));
+    todoist.push(karmaPoint);
   
     const dailyGoal = [
       `🌸 Completed ${days_items[0].total_completed.toString()} tasks today`,
     ];
-    todoist.push(dailyGoal.join(" "));
+    todoist.push(dailyGoal);
   
     const totalTasks = [`✅ Completed ${Humanize.intComma(completed_count)} tasks so far`];
-    todoist.push(totalTasks.join(" "));
+    todoist.push(totalTasks);
   
     const longestStreak = [
       `⌛ Longest streak is ${goals.max_daily_streak.count} days`,
     ];
-    todoist.push(longestStreak.join(" "));
+    todoist.push(longestStreak);
   
     if (todoist.length == 0) return;
-  }
 
-  console.log(todoist.length);
-
-  if (todoist.length > 0) {
-    console.log(todoist.length);
-      const readmeData = fs.readFileSync(README_FILE_PATH, "utf8");
-
-
-      const newReadme = buildReadme(readmeData, todoist);
-      if (newReadme !== readmeData) {
-        core.info('Writing to ' + README_FILE_PATH);
-        fs.writeFileSync(README_FILE_PATH, newReadme);
-        if (!process.env.TEST_MODE) {
-          commitReadme();
+    if (todoist.length > 0) {
+      console.log(todoist.length);
+        const readmeData = fs.readFileSync(README_FILE_PATH, "utf8");
+  
+  
+        const newReadme = buildReadme(readmeData, todoist);
+        if (newReadme !== readmeData) {
+          core.info('Writing to ' + README_FILE_PATH);
+          fs.writeFileSync(README_FILE_PATH, newReadme);
+          if (!process.env.TEST_MODE) {
+            commitReadme();
+          }
+        } else {
+          core.info('No change detected, skipping');
+          process.exit(0);
         }
-      } else {
-        core.info('No change detected, skipping');
-        process.exit(0);
-      }
-    } 
-   else {
-    core.info("Nothing fetched");
-    process.exit(jobFailFlag ? 1 : 0);
+      } 
+     else {
+      core.info("Nothing fetched");
+      process.exit(jobFailFlag ? 1 : 0);
+    }
   }
+
+  // console.log(todoist.length);
+
+
 
   
   const buildReadme = (prevReadmeContent, newReadmeContent) => {
