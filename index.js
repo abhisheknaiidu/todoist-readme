@@ -43,7 +43,7 @@ async function updateReadme(data) {
         const readmeData = fs.readFileSync(README_FILE_PATH, "utf8");
   
   
-        const newReadme = buildReadme(readmeData, todoist.split(","));
+        const newReadme = buildReadme(readmeData, todoist.join("\n"));
         if (newReadme !== readmeData) {
           core.info('Writing to ' + README_FILE_PATH);
           fs.writeFileSync(README_FILE_PATH, newReadme);
