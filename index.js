@@ -34,7 +34,7 @@ async function updateReadme(data) {
 
     if(PREMIUM) {
       const weekItems = [`🗓  Completed ${week_items[0].total_completed.toString()} tasks this week`];
-      todoist.push(totalTasks);
+      todoist.push(weekItems);
     }
 
   
