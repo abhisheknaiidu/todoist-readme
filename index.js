@@ -29,7 +29,7 @@ async function updateReadme(data) {
   ];
   todoist.push(dailyGoal);
 
-  if (PREMIUM === true) {
+  if (PREMIUM == "true") {
     const weekItems = [
       `🗓  Completed **${week_items[0].total_completed.toString()}** tasks this week`,
     ];
