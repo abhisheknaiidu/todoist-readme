@@ -49,7 +49,7 @@ async function updateReadme(data) {
   if (todoist.length == 0) return;
 
   if (todoist.length > 0) {
-    console.log(todoist.length);
+    // console.log(todoist.length);
     // const showTasks = todoist.reduce((todo, cur, index) => {
     //   return todo + `\n${cur}        ` + (((index + 1) === todoist.length) ? '\n' : '');
     // })
