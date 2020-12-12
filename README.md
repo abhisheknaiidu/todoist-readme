@@ -1,7 +1,14 @@
 <p align="center">
   <img width="400" src="assets/todoist-stat.png">
-  <h3 align="center">🚧 Todoist Stats</h3>
-  <p align="center">⚡️📌 Update your Todoist Stats ✅ </p>
+  <h3 align="center">🚧 My Todoist Stats:</h3>
+ 
+  <p  align="center">🏆 <b>2,878</b> Karma Points</p>
+  <p  align="center" >🌸  Completed <b> 7 </b> tasks today </p>
+  <p  align="center">🗒️ Completed <b>16</b> tasks this week </p>
+  <p  align="center"> ✅  Completed <b>160</b> tasks so far </p>
+  <p  align="center">⏳ Longest streak is <b>10</b> days </p>
+ 
+ 
 </p>
 
 ---
