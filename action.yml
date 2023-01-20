@@ -11,16 +11,16 @@ inputs:
     description: 'Your GitHub username'
     default: ${{ github.repository_owner }}
     required: false
-  
+
   PREMIUM:
     description: 'Premium User or Not'
-    default: false
+    default: ""
     required: false
 
 runs:
-  using: "node12"
+  using: "node16"
   main: "dist/index.js"
 
 branding:
-  icon: "activity"
-  color: "red"
+  icon: "airplay"
+  color: "purple"
