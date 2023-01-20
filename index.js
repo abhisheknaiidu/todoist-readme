@@ -9,7 +9,7 @@ const PREMIUM = core.getInput("PREMIUM");
 
 async function main() {
   const stats = await axios(
-    `https://api.todoist.com/sync/v8.3/completed/get_stats?token=${TODOIST_API_KEY}`
+    `https://api.todoist.com/sync/v9/completed/get_stats?token=${TODOIST_API_KEY}`
   );
   await updateReadme(stats.data);
 }
@@ -109,9 +109,9 @@ const buildReadme = (prevReadmeContent, newReadmeContent) => {
 
 const commitReadme = async () => {
   // Getting config
-  const committerUsername = "Abhishek Naidu";
-  const committerEmail = "example@gmail.com";
-  const commitMessage = "Todoist updated.";
+  const committerUsername = "Todoist Buttler";
+  const committerEmail = "doydevlabs@gmail.com";
+  const commitMessage = "Todoist ✅ updated. 💠";
   // Doing commit and push
   await exec("git", ["config", "--global", "user.email", committerEmail]);
   await exec("git", ["config", "--global", "user.name", committerUsername]);
