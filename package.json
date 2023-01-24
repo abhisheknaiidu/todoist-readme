@@ -2,10 +2,11 @@
   "name": "todoist-readme",
   "version": "0.0.7",
   "description": "🚧 Updates README with your Todoist stats",
-  "main": "index.js",
+  "type": "module",
   "dependencies": {
-    "@actions/core": "^1.2.5",
-    "axios": "^0.20.0",
+    "@actions/core": "^1.10.0",
+    "@doist/todoist-api-typescript": "^2.1.2",
+    "axios": "^1.2.3",
     "child_process": "^1.0.2",
     "humanize-plus": "^1.8.2",
     "process": "^0.11.10"
@@ -15,7 +16,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "ncc build index.js -o dist"
+    "build": "ncc build index.js -o dist",
+    "start": "node dist/index.js --trace-warning"
   },
   "repository": {
     "type": "git",
