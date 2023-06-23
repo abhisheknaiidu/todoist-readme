@@ -4,7 +4,7 @@
   "description": "🚧 Updates README with your Todoist stats",
   "main": "index.js",
   "dependencies": {
-    "@actions/core": "^1.2.5",
+    "@actions/core": "^1.2.6",
     "axios": "^0.20.0",
     "child_process": "^1.0.2",
     "humanize-plus": "^1.8.2",
