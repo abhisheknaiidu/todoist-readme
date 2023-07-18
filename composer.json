@@ -1,0 +1,6 @@
+{
+    "require": {
+        "coyl/git": "^0.1.7",
+        "guzzle/guzzle": "^3.9"
+    }
+}

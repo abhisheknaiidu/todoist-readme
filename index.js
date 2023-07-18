@@ -46,7 +46,7 @@ async function updateReadme(data) {
   const longestStreak = [
     `⏳  Longest streak is **${goals.max_daily_streak.count}** days`,
   ];
-  todoist.push(longestStreak);
+  // todoist.push(longestStreak);
 
   if (todoist.length == 0) return;
 
@@ -111,8 +111,8 @@ const buildReadme = (prevReadmeContent, newReadmeContent) => {
 
 const commitReadme = async () => {
   // Getting config
-  const committerUsername = "Abhishek Naidu";
-  const committerEmail = "example@gmail.com";
+  const committerUsername = "DoyDevLabs";
+  const committerEmail = "doydevlabs@gmail.com";
   const commitMessage = "Todoist updated.";
   // Doing commit and push
   await exec("git", ["config", "--global", "user.email", committerEmail]);
